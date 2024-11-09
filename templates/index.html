@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accident Detection</title>
+    <style>
+        /* Overall Layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #4f77ff, #ff5f6d, #ffc371, #34d058);
+            background-size: 300% 300%;
+            animation: gradientAnimation 10s ease infinite;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Gradient Animation */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #f1f1f1;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px;
+        }
+
+        /* Image Styling */
+        img {
+            border: 2px solid #fff; /* Changed border color for better visibility */
+            border-radius: 10px;
+        }
+
+        /* Form Styling */
+        form {
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        /* Button Styling */
+        button {
+            background: linear-gradient(45deg, #34d058, #28a745);
+            color: white;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #28a745, #34d058);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <h1>Accident Detection in Video Stream</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="video" accept=".mp4, .avi" required>
+        <button type="submit">Upload Video</button>
+    </form>
+    <form action="/predict" method="post">
+        <button class="home-button">Predict</button>
+    </form>
+    <img src="{{ url_for('video_feed') }}" width="640" height="480">
+</body>
+</html>
